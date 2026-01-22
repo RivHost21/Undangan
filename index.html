@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Undangan Pernikahan | Aditya & Maharani</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --hitam:#0b0b0b;
+  --hitam:#0a0a0a;
   --emas:#d4af37;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -17,110 +17,133 @@ body{
   font-family:'Poppins',sans-serif;
   background:#000;
   color:#fff;
+  overflow-x:hidden;
 }
 
 /* bunga pojok */
 .corner{
   position:fixed;
-  width:80px;height:80px;
+  width:90px;height:90px;
   background:radial-gradient(circle,var(--emas),transparent 70%);
-  opacity:.4;z-index:1;
+  opacity:.35;
+  z-index:1;
 }
 .tl{top:0;left:0}.tr{top:0;right:0}
 .bl{bottom:0;left:0}.br{bottom:0;right:0}
 
-/* navigasi */
-nav{
-  position:fixed;
-  bottom:15px;
-  left:50%;
-  transform:translateX(-50%);
-  display:none;
-  gap:8px;
-  z-index:10;
-}
-nav button{
-  background:rgba(212,175,55,.15);
-  border:1px solid var(--emas);
-  color:var(--emas);
-  padding:7px 14px;
-  border-radius:20px;
-  font-size:12px;
-}
-
-/* halaman */
+/* section */
 section{
   min-height:100vh;
-  padding:80px 20px;
-  display:none;
-  animation:fade .6s ease;
+  padding:90px 20px;
+  background-size:cover;
+  background-position:center;
 }
-section.active{display:block}
-@keyframes fade{
-  from{opacity:0;transform:translateY(25px)}
-  to{opacity:1;transform:none}
+.container{
+  max-width:850px;
+  margin:auto;
+  text-align:center;
 }
-
-.container{max-width:900px;margin:auto;text-align:center}
 .gold{color:var(--emas)}
 .arab{font-size:26px;line-height:1.8}
 
 .box{
+  margin-top:25px;
+  padding:22px;
+  border-radius:18px;
   border:1px solid var(--emas);
-  padding:20px;
-  margin-top:20px;
-  border-radius:15px;
   background:rgba(0,0,0,.65);
 }
 
-/* BACKGROUND (NO FOLDER) */
-.bg-cover{background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.9)),url('bg-cover.jpg') center/cover;}
-.bg-couple{background:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.95)),url('bg-couple.jpg') center/cover;}
-.bg-dalil{background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.95)),url('bg-dalil.jpg') center/cover;}
-.bg-event{background:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.95)),url('bg-event.jpg') center/cover;}
-.bg-gallery{background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.95)),url('bg-gallery.jpg') center/cover;}
-.bg-rsvp{background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.95)),url('bg-rsvp.jpg') center/cover;}
+/* background */
+.bg-cover{background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.9)),url('bg-cover.jpg')}
+.bg-couple{background:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.95)),url('bg-couple.jpg')}
+.bg-dalil{background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.95)),url('bg-dalil.jpg')}
+.bg-event{background:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.95)),url('bg-event.jpg')}
+.bg-gallery{background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.95)),url('bg-gallery.jpg')}
+.bg-rsvp{background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.95)),url('bg-rsvp.jpg')}
 
 /* tombol */
 .btn{
   display:inline-block;
-  margin-top:15px;
-  padding:12px 24px;
-  border-radius:30px;
+  margin-top:20px;
+  padding:14px 30px;
+  border-radius:35px;
   background:var(--emas);
   color:#000;
   font-weight:500;
   text-decoration:none;
 }
 
-/* countdown */
-#countdown{display:flex;justify-content:center;gap:12px;margin-top:15px}
-.time{
-  border:1px solid var(--emas);
-  padding:10px;width:70px;
-  border-radius:10px;
-}
-
 /* galeri */
 .gallery{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:10px;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
 }
 .gallery img{
   width:100%;
-  border-radius:12px;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:14px;
   border:1px solid var(--emas);
 }
 
+/* countdown */
+#countdown{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:20px;
+}
+.time{
+  width:70px;
+  padding:10px;
+  border-radius:12px;
+  border:1px solid var(--emas);
+  font-size:13px;
+}
+
 /* rsvp */
-.rsvp{display:flex;gap:15px;justify-content:center;flex-wrap:wrap}
+.rsvp{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
 .rsvp a{
+  padding:12px 22px;
+  border-radius:30px;
   border:1px solid var(--emas);
   color:var(--emas);
-  padding:10px 18px;
-  border-radius:25px;
   text-decoration:none;
+}
+
+/* LIGHTBOX */
+#lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.95);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+#lightbox img{
+  max-width:92%;
+  max-height:88%;
+  border-radius:18px;
+  animation:zoom .3s ease;
+}
+@keyframes zoom{
+  from{transform:scale(.8);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+#close{
+  position:absolute;
+  top:18px;
+  right:25px;
+  font-size:36px;
+  color:#fff;
 }
 
 audio{display:none}
@@ -137,7 +160,7 @@ audio{display:none}
 </audio>
 
 <!-- COVER -->
-<section id="cover" class="bg-cover active">
+<section id="cover" class="bg-cover">
   <div class="container">
     <div class="arab gold">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
     <h1 class="gold">Undangan Pernikahan</h1>
@@ -149,8 +172,9 @@ audio{display:none}
   </div>
 </section>
 
-<!-- MEMPELAI -->
-<section id="couple" class="bg-couple">
+<div id="content" style="display:none">
+
+<section class="bg-couple">
   <div class="container">
     <h2 class="gold">Mempelai</h2>
     <div class="box">
@@ -164,8 +188,7 @@ audio{display:none}
   </div>
 </section>
 
-<!-- DALIL -->
-<section id="dalil" class="bg-dalil">
+<section class="bg-dalil">
   <div class="container">
     <h2 class="gold">Dalil Pernikahan</h2>
     <div class="box">
@@ -173,14 +196,15 @@ audio{display:none}
         وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا
         لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
       </p>
-      <p>“Dan Dia menjadikan di antaramu rasa kasih dan sayang.”</p>
+      <p style="margin-top:15px">
+        Dan Dia menjadikan di antaramu rasa kasih dan sayang.
+      </p>
       <p class="gold">(QS. Ar-Rum : 21)</p>
     </div>
   </div>
 </section>
 
-<!-- ACARA -->
-<section id="event" class="bg-event">
+<section class="bg-event">
   <div class="container">
     <h2 class="gold">Detail Acara</h2>
     <div class="box">
@@ -193,21 +217,19 @@ audio{display:none}
   </div>
 </section>
 
-<!-- GALERI -->
-<section id="gallery" class="bg-gallery">
+<section class="bg-gallery">
   <div class="container">
     <h2 class="gold">Galeri Kenangan</h2>
     <div class="gallery">
-      <img src="galeri1.jpg">
-      <img src="galeri2.jpg">
-      <img src="galeri3.jpg">
-      <img src="galeri4.jpg">
+      <img src="galeri1.jpg" onclick="openLB(0)">
+      <img src="galeri2.jpg" onclick="openLB(1)">
+      <img src="galeri3.jpg" onclick="openLB(2)">
+      <img src="galeri4.jpg" onclick="openLB(3)">
     </div>
   </div>
 </section>
 
-<!-- RSVP -->
-<section id="rsvp" class="bg-rsvp">
+<section class="bg-rsvp">
   <div class="container">
     <h2 class="gold">Konfirmasi Kehadiran</h2>
     <div class="box rsvp">
@@ -217,27 +239,54 @@ audio{display:none}
   </div>
 </section>
 
-<nav id="nav">
-  <button onclick="openPage('couple')">Mempelai</button>
-  <button onclick="openPage('dalil')">Dalil</button>
-  <button onclick="openPage('event')">Acara</button>
-  <button onclick="openPage('gallery')">Galeri</button>
-  <button onclick="openPage('rsvp')">RSVP</button>
-</nav>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLB()">
+  <span id="close">×</span>
+  <img id="lb-img">
+</div>
 
 <script>
-const pages=document.querySelectorAll('section');
+const images=["galeri1.jpg","galeri2.jpg","galeri3.jpg","galeri4.jpg"];
+let index=0;
 
 function buka(){
-  openPage('couple');
-  document.getElementById('nav').style.display='flex';
   document.getElementById('music').play();
-}
-function openPage(id){
-  pages.forEach(p=>p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+  document.getElementById('content').style.display='block';
+  document.getElementById('cover').style.display='none';
 }
 
+function openLB(i){
+  index=i;
+  document.getElementById('lb-img').src=images[index];
+  document.getElementById('lightbox').style.display='flex';
+}
+
+function closeLB(){
+  document.getElementById('lightbox').style.display='none';
+}
+
+/* swipe */
+let startX=0;
+document.getElementById('lightbox').addEventListener('touchstart',e=>{
+  startX=e.touches[0].clientX;
+});
+document.getElementById('lightbox').addEventListener('touchend',e=>{
+  let endX=e.changedTouches[0].clientX;
+  if(endX<startX-50) next();
+  if(endX>startX+50) prev();
+});
+function next(){
+  index=(index+1)%images.length;
+  document.getElementById('lb-img').src=images[index];
+}
+function prev(){
+  index=(index-1+images.length)%images.length;
+  document.getElementById('lb-img').src=images[index];
+}
+
+/* countdown */
 const target=new Date("2026-01-26T09:00:00").getTime();
 setInterval(()=>{
   const now=new Date().getTime();
@@ -251,4 +300,4 @@ setInterval(()=>{
 </script>
 
 </body>
-</html>
+  </html>
