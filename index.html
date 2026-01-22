@@ -9,6 +9,7 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
   font-family:'Playfair Display',serif;
   background:#000;
@@ -16,7 +17,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== ORNAMEN ===== */
+/* ================= ORNAMEN ================= */
 .corner{
   position:fixed;
   width:130px;height:130px;
@@ -30,7 +31,7 @@ body{
 .bl{bottom:0;left:0;transform:scaleY(-1)}
 .br{bottom:0;right:0;transform:scale(-1)}
 
-/* ===== COVER ===== */
+/* ================= COVER ================= */
 #cover{
   position:fixed;
   inset:0;
@@ -38,15 +39,14 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  z-index:10;
-  transition:1s ease;
+  z-index:20;
 }
 .cover-box{
-  background:rgba(0,0,0,.7);
+  background:rgba(0,0,0,.75);
   border:1px solid gold;
   padding:40px;
   text-align:center;
-  animation:fadeZoom 1.3s ease;
+  animation:zoomFade 1.2s ease;
 }
 .cover-box h1{
   font-family:'Scheherazade New',serif;
@@ -61,12 +61,17 @@ body{
   font-size:16px;
   cursor:pointer;
 }
-@keyframes fadeZoom{
+@keyframes zoomFade{
   from{opacity:0;transform:scale(.85)}
   to{opacity:1;transform:scale(1)}
 }
 
-/* ===== SECTION ===== */
+/* ================= KUNCI ISI ================= */
+.locked{
+  display:none;
+}
+
+/* ================= SECTION ================= */
 section{
   min-height:100vh;
   padding:90px 20px;
@@ -87,7 +92,7 @@ section{
   max-width:500px;
 }
 
-/* ===== GALERI ===== */
+/* ================= GALERI ================= */
 .gallery{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -101,7 +106,7 @@ section{
   cursor:pointer;
 }
 
-/* ===== LIGHTBOX ===== */
+/* ================= LIGHTBOX ================= */
 #lightbox{
   position:fixed;
   inset:0;
@@ -109,14 +114,14 @@ section{
   display:none;
   justify-content:center;
   align-items:center;
-  z-index:20;
+  z-index:30;
 }
 #lightbox img{
   max-width:90%;
   max-height:90%;
 }
 
-/* ===== RSVP ===== */
+/* ================= RSVP ================= */
 .rsvp a{
   display:block;
   margin:12px 0;
@@ -127,7 +132,7 @@ section{
   border-radius:30px;
 }
 
-/* ===== NAV ===== */
+/* ================= NAV ================= */
 nav{
   position:fixed;
   bottom:10px;
@@ -139,7 +144,7 @@ nav{
   background:rgba(0,0,0,.75);
   border:1px solid gold;
   border-radius:30px;
-  z-index:5;
+  z-index:10;
 }
 nav a{
   color:gold;
@@ -169,7 +174,7 @@ nav a{
 <audio id="musik" src="musik.mp3" loop></audio>
 
 <!-- NAV -->
-<nav>
+<nav class="locked">
   <a href="#akad">Akad</a>
   <a href="#dalil">Dalil</a>
   <a href="#galeri">Galeri</a>
@@ -177,7 +182,7 @@ nav a{
 </nav>
 
 <!-- AKAD -->
-<section id="akad" class="bg2">
+<section id="akad" class="bg2 locked">
   <div class="box">
     <h2>Aditya Maharaja</h2>
     <p>Putra dari<br>Abbiya Aldevaro & Anindya Fariha</p><br>
@@ -195,7 +200,7 @@ nav a{
 </section>
 
 <!-- DALIL -->
-<section id="dalil" class="bg3">
+<section id="dalil" class="bg3 locked">
   <div class="box">
     <h2>Dalil Pernikahan</h2><br>
     <p style="font-family:'Scheherazade New',serif;font-size:26px;line-height:1.8">
@@ -212,7 +217,7 @@ nav a{
 </section>
 
 <!-- GALERI -->
-<section id="galeri" class="bg4">
+<section id="galeri" class="bg4 locked">
   <div class="box">
     <h2>Galeri Kenangan</h2><br>
     <div class="gallery">
@@ -225,7 +230,7 @@ nav a{
 </section>
 
 <!-- RSVP -->
-<section id="rsvp" class="bg5">
+<section id="rsvp" class="bg5 locked">
   <div class="box rsvp">
     <h2>Konfirmasi Kehadiran</h2>
     <a href="https://wa.me/628988445100?text=assalamualaikum,saya%20akan%20hadir%20di%20pernikahan%20kalian">Hadir</a>
@@ -240,18 +245,28 @@ nav a{
 
 <script>
 function buka(){
-  document.getElementById('cover').style.opacity='0';
-  document.getElementById('cover').style.transform='scale(1.2)';
-  setTimeout(()=>document.getElementById('cover').style.display='none',1000);
+  // buka semua isi
+  document.querySelectorAll('.locked').forEach(el=>{
+    el.style.display='flex';
+  });
+
+  // animasi cover
+  const cover=document.getElementById('cover');
+  cover.style.opacity='0';
+  cover.style.transform='scale(1.2)';
+  setTimeout(()=>cover.style.display='none',1000);
+
+  // musik
   document.getElementById('musik').play();
 }
 
+// galeri fullscreen
 function zoom(img){
   document.getElementById('lightbox').style.display='flex';
   document.getElementById('lightimg').src=img.src;
 }
 
-/* COUNTDOWN */
+// countdown
 const target=new Date("2026-01-26T09:00:00+07:00").getTime();
 setInterval(()=>{
   const now=new Date().getTime();
@@ -260,11 +275,12 @@ setInterval(()=>{
     document.getElementById("countdown").innerHTML="✨ Acara Sedang Berlangsung ✨";
     return;
   }
-  const h=Math.floor((d%(1000*60*60*24))/(1000*60*60));
-  const m=Math.floor((d%(1000*60*60))/(1000*60));
-  const s=Math.floor((d%(1000*60))/1000);
+  const hari=Math.floor(d/(1000*60*60*24));
+  const jam=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+  const menit=Math.floor((d%(1000*60*60))/(1000*60));
+  const detik=Math.floor((d%(1000*60))/1000);
   document.getElementById("countdown").innerHTML=
-  `⏳ ${Math.floor(d/(1000*60*60*24))} Hari ${h} Jam ${m} Menit ${s} Detik`;
+    `⏳ ${hari} Hari ${jam} Jam ${menit} Menit ${detik} Detik`;
 },1000);
 </script>
 
