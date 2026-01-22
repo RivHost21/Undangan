@@ -15,26 +15,29 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{
   font-family:'Poppins',sans-serif;
-  background:var(--hitam);
+  background:#000;
   color:#fff;
 }
 
-/* ===== BUNGA POJOK ===== */
+/* bunga pojok */
 .corner{
   position:fixed;
-  width:90px;height:90px;
+  width:80px;height:80px;
   background:radial-gradient(circle,var(--emas),transparent 70%);
   opacity:.4;z-index:1;
 }
 .tl{top:0;left:0}.tr{top:0;right:0}
 .bl{bottom:0;left:0}.br{bottom:0;right:0}
 
-/* ===== NAV ===== */
+/* navigasi */
 nav{
   position:fixed;
-  bottom:15px;left:50%;
+  bottom:15px;
+  left:50%;
   transform:translateX(-50%);
-  display:none;gap:8px;z-index:10;
+  display:none;
+  gap:8px;
+  z-index:10;
 }
 nav button{
   background:rgba(212,175,55,.15);
@@ -45,7 +48,7 @@ nav button{
   font-size:12px;
 }
 
-/* ===== PAGE ===== */
+/* halaman */
 section{
   min-height:100vh;
   padding:80px 20px;
@@ -53,17 +56,12 @@ section{
   animation:fade .6s ease;
 }
 section.active{display:block}
-
 @keyframes fade{
   from{opacity:0;transform:translateY(25px)}
   to{opacity:1;transform:none}
 }
 
-.container{
-  max-width:900px;
-  margin:auto;
-  text-align:center;
-}
+.container{max-width:900px;margin:auto;text-align:center}
 .gold{color:var(--emas)}
 .arab{font-size:26px;line-height:1.8}
 
@@ -75,33 +73,15 @@ section.active{display:block}
   background:rgba(0,0,0,.65);
 }
 
-/* ===== BACKGROUND TIAP PAGE ===== */
-.bg-cover{
-  background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.9)),
-  source ('bg-cover.jpg') center/cover;
-}
-.bg-couple{
-  background:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.95)),
-  url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1') center/cover;
-}
-.bg-dalil{
-  background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.95)),
-  url('https://images.unsplash.com/photo-1544717305-996b815c338c') center/cover;
-}
-.bg-event{
-  background:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.95)),
-  url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee') center/cover;
-}
-.bg-gallery{
-  background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.95)),
-  url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70') center/cover;
-}
-.bg-rsvp{
-  background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.95)),
-  url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f') center/cover;
-}
+/* BACKGROUND (NO FOLDER) */
+.bg-cover{background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.9)),url('bg-cover.jpg') center/cover;}
+.bg-couple{background:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.95)),url('bg-couple.jpg') center/cover;}
+.bg-dalil{background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.95)),url('bg-dalil.jpg') center/cover;}
+.bg-event{background:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.95)),url('bg-event.jpg') center/cover;}
+.bg-gallery{background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.95)),url('bg-gallery.jpg') center/cover;}
+.bg-rsvp{background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.95)),url('bg-rsvp.jpg') center/cover;}
 
-/* ===== BUTTON ===== */
+/* tombol */
 .btn{
   display:inline-block;
   margin-top:15px;
@@ -113,7 +93,7 @@ section.active{display:block}
   text-decoration:none;
 }
 
-/* ===== COUNTDOWN ===== */
+/* countdown */
 #countdown{display:flex;justify-content:center;gap:12px;margin-top:15px}
 .time{
   border:1px solid var(--emas);
@@ -121,7 +101,7 @@ section.active{display:block}
   border-radius:10px;
 }
 
-/* ===== GALLERY ===== */
+/* galeri */
 .gallery{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
@@ -133,7 +113,7 @@ section.active{display:block}
   border:1px solid var(--emas);
 }
 
-/* ===== RSVP ===== */
+/* rsvp */
 .rsvp{display:flex;gap:15px;justify-content:center;flex-wrap:wrap}
 .rsvp a{
   border:1px solid var(--emas);
@@ -156,7 +136,7 @@ audio{display:none}
   <source src="musik.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ===== COVER ===== -->
+<!-- COVER -->
 <section id="cover" class="bg-cover active">
   <div class="container">
     <div class="arab gold">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
@@ -169,7 +149,7 @@ audio{display:none}
   </div>
 </section>
 
-<!-- ===== MEMPELAI ===== -->
+<!-- MEMPELAI -->
 <section id="couple" class="bg-couple">
   <div class="container">
     <h2 class="gold">Mempelai</h2>
@@ -184,7 +164,7 @@ audio{display:none}
   </div>
 </section>
 
-<!-- ===== DALIL ===== -->
+<!-- DALIL -->
 <section id="dalil" class="bg-dalil">
   <div class="container">
     <h2 class="gold">Dalil Pernikahan</h2>
@@ -193,16 +173,13 @@ audio{display:none}
         وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا
         لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
       </p>
-      <p style="margin-top:15px">
-        “Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan
-        agar kamu merasa tenteram dan dijadikan-Nya kasih dan sayang.”
-      </p>
+      <p>“Dan Dia menjadikan di antaramu rasa kasih dan sayang.”</p>
       <p class="gold">(QS. Ar-Rum : 21)</p>
     </div>
   </div>
 </section>
 
-<!-- ===== ACARA ===== -->
+<!-- ACARA -->
 <section id="event" class="bg-event">
   <div class="container">
     <h2 class="gold">Detail Acara</h2>
@@ -216,20 +193,20 @@ audio{display:none}
   </div>
 </section>
 
-<!-- ===== GALERI ===== -->
+<!-- GALERI -->
 <section id="gallery" class="bg-gallery">
   <div class="container">
     <h2 class="gold">Galeri Kenangan</h2>
     <div class="gallery">
-      <img src="https://picsum.photos/400/400?1">
-      <img src="https://picsum.photos/400/400?2">
-      <img src="https://picsum.photos/400/400?3">
-      <img src="https://picsum.photos/400/400?4">
+      <img src="galeri1.jpg">
+      <img src="galeri2.jpg">
+      <img src="galeri3.jpg">
+      <img src="galeri4.jpg">
     </div>
   </div>
 </section>
 
-<!-- ===== RSVP ===== -->
+<!-- RSVP -->
 <section id="rsvp" class="bg-rsvp">
   <div class="container">
     <h2 class="gold">Konfirmasi Kehadiran</h2>
@@ -261,7 +238,6 @@ function openPage(id){
   document.getElementById(id).classList.add('active');
 }
 
-/* COUNTDOWN */
 const target=new Date("2026-01-26T09:00:00").getTime();
 setInterval(()=>{
   const now=new Date().getTime();
