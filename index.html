@@ -3,301 +3,270 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Undangan Pernikahan | Aditya & Maharani</title>
+<title>Undangan Pernikahan</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Scheherazade+New:wght@700&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --hitam:#0a0a0a;
-  --emas:#d4af37;
-}
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-  font-family:'Poppins',sans-serif;
+  font-family:'Playfair Display',serif;
   background:#000;
-  color:#fff;
+  color:#f5e6c8;
   overflow-x:hidden;
 }
 
-/* bunga pojok */
+/* ===== ORNAMEN ===== */
 .corner{
   position:fixed;
-  width:90px;height:90px;
-  background:radial-gradient(circle,var(--emas),transparent 70%);
-  opacity:.35;
-  z-index:1;
+  width:130px;height:130px;
+  background:url('bunga.png') center/contain no-repeat;
+  opacity:.75;
+  z-index:3;
+  pointer-events:none;
 }
-.tl{top:0;left:0}.tr{top:0;right:0}
-.bl{bottom:0;left:0}.br{bottom:0;right:0}
+.tl{top:0;left:0}
+.tr{top:0;right:0;transform:scaleX(-1)}
+.bl{bottom:0;left:0;transform:scaleY(-1)}
+.br{bottom:0;right:0;transform:scale(-1)}
 
-/* section */
+/* ===== COVER ===== */
+#cover{
+  position:fixed;
+  inset:0;
+  background:url('bg1.jpg') center/cover no-repeat;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:10;
+  transition:1s ease;
+}
+.cover-box{
+  background:rgba(0,0,0,.7);
+  border:1px solid gold;
+  padding:40px;
+  text-align:center;
+  animation:fadeZoom 1.3s ease;
+}
+.cover-box h1{
+  font-family:'Scheherazade New',serif;
+  font-size:30px;
+}
+.cover-box button{
+  margin-top:20px;
+  padding:12px 35px;
+  border:none;
+  border-radius:30px;
+  background:gold;
+  font-size:16px;
+  cursor:pointer;
+}
+@keyframes fadeZoom{
+  from{opacity:0;transform:scale(.85)}
+  to{opacity:1;transform:scale(1)}
+}
+
+/* ===== SECTION ===== */
 section{
   min-height:100vh;
   padding:90px 20px;
-  background-size:cover;
-  background-position:center;
-}
-.container{
-  max-width:850px;
-  margin:auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   text-align:center;
 }
-.gold{color:var(--emas)}
-.arab{font-size:26px;line-height:1.8}
+.bg2{background:url('bg2.jpg') center/cover fixed}
+.bg3{background:url('bg3.jpg') center/cover fixed}
+.bg4{background:url('bg4.jpg') center/cover fixed}
+.bg5{background:url('bg5.jpg') center/cover fixed}
 
 .box{
-  margin-top:25px;
-  padding:22px;
-  border-radius:18px;
-  border:1px solid var(--emas);
   background:rgba(0,0,0,.65);
+  border:1px solid gold;
+  padding:35px;
+  max-width:500px;
 }
 
-/* background */
-.bg-cover{background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.9)),url('bg-cover.jpg')}
-.bg-couple{background:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.95)),url('bg-couple.jpg')}
-.bg-dalil{background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.95)),url('bg-dalil.jpg')}
-.bg-event{background:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.95)),url('bg-event.jpg')}
-.bg-gallery{background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.95)),url('bg-gallery.jpg')}
-.bg-rsvp{background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.95)),url('bg-rsvp.jpg')}
-
-/* tombol */
-.btn{
-  display:inline-block;
-  margin-top:20px;
-  padding:14px 30px;
-  border-radius:35px;
-  background:var(--emas);
-  color:#000;
-  font-weight:500;
-  text-decoration:none;
-}
-
-/* galeri */
+/* ===== GALERI ===== */
 .gallery{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:12px;
+  gap:10px;
 }
 .gallery img{
   width:100%;
   aspect-ratio:1/1;
   object-fit:cover;
-  border-radius:14px;
-  border:1px solid var(--emas);
+  border:1px solid gold;
+  cursor:pointer;
 }
 
-/* countdown */
-#countdown{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-top:20px;
-}
-.time{
-  width:70px;
-  padding:10px;
-  border-radius:12px;
-  border:1px solid var(--emas);
-  font-size:13px;
-}
-
-/* rsvp */
-.rsvp{
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  flex-wrap:wrap;
-}
-.rsvp a{
-  padding:12px 22px;
-  border-radius:30px;
-  border:1px solid var(--emas);
-  color:var(--emas);
-  text-decoration:none;
-}
-
-/* LIGHTBOX */
+/* ===== LIGHTBOX ===== */
 #lightbox{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.95);
+  background:rgba(0,0,0,.9);
   display:none;
   justify-content:center;
   align-items:center;
-  z-index:999;
+  z-index:20;
 }
 #lightbox img{
-  max-width:92%;
-  max-height:88%;
-  border-radius:18px;
-  animation:zoom .3s ease;
-}
-@keyframes zoom{
-  from{transform:scale(.8);opacity:0}
-  to{transform:scale(1);opacity:1}
-}
-#close{
-  position:absolute;
-  top:18px;
-  right:25px;
-  font-size:36px;
-  color:#fff;
+  max-width:90%;
+  max-height:90%;
 }
 
-audio{display:none}
+/* ===== RSVP ===== */
+.rsvp a{
+  display:block;
+  margin:12px 0;
+  padding:14px;
+  background:gold;
+  color:black;
+  text-decoration:none;
+  border-radius:30px;
+}
+
+/* ===== NAV ===== */
+nav{
+  position:fixed;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:15px;
+  padding:10px 20px;
+  background:rgba(0,0,0,.75);
+  border:1px solid gold;
+  border-radius:30px;
+  z-index:5;
+}
+nav a{
+  color:gold;
+  text-decoration:none;
+  font-size:13px;
+}
 </style>
 </head>
 
 <body>
 
-<div class="corner tl"></div><div class="corner tr"></div>
-<div class="corner bl"></div><div class="corner br"></div>
-
-<audio id="music" loop>
-  <source src="musik.mp3" type="audio/mpeg">
-</audio>
+<!-- ORNAMEN -->
+<div class="corner tl"></div>
+<div class="corner tr"></div>
+<div class="corner bl"></div>
+<div class="corner br"></div>
 
 <!-- COVER -->
-<section id="cover" class="bg-cover">
-  <div class="container">
-    <div class="arab gold">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
-    <h1 class="gold">Undangan Pernikahan</h1>
-    <p>Aditya Maharaja & Maharani Azzahra</p>
-    <div class="box">
-      <p>Kepada Yth.<br>Tamu Undangan</p>
-      <a class="btn" onclick="buka()">Buka Undangan</a>
-    </div>
+<div id="cover">
+  <div class="cover-box">
+    <h1>بِسْمِ اللَّهِ الرَّحْمٰنِ الرَّحِيْمِ</h1>
+    <p>Undangan Pernikahan</p>
+    <button onclick="buka()">Buka Undangan</button>
   </div>
-</section>
-
-<div id="content" style="display:none">
-
-<section class="bg-couple">
-  <div class="container">
-    <h2 class="gold">Mempelai</h2>
-    <div class="box">
-      <h3>Maharani Azzahra</h3>
-      <p>Putri dari<br>Bapak Komeng<br>Ibu Mput</p>
-    </div>
-    <div class="box">
-      <h3>Aditya Maharaja</h3>
-      <p>Putra dari<br>Bapak Abbiya Aldevaro<br>Ibu Anindya Fariha</p>
-    </div>
-  </div>
-</section>
-
-<section class="bg-dalil">
-  <div class="container">
-    <h2 class="gold">Dalil Pernikahan</h2>
-    <div class="box">
-      <p class="arab">
-        وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا
-        لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
-      </p>
-      <p style="margin-top:15px">
-        Dan Dia menjadikan di antaramu rasa kasih dan sayang.
-      </p>
-      <p class="gold">(QS. Ar-Rum : 21)</p>
-    </div>
-  </div>
-</section>
-
-<section class="bg-event">
-  <div class="container">
-    <h2 class="gold">Detail Acara</h2>
-    <div class="box">
-      <p>Senin, 26 Januari 2026</p>
-      <p>09.00 WIB - Selesai</p>
-      <p>SMK Widya Mukti</p>
-      <a class="btn" href="https://www.google.com/maps/search/SMK+Widya+Mukti" target="_blank">Google Maps</a>
-      <div id="countdown"></div>
-    </div>
-  </div>
-</section>
-
-<section class="bg-gallery">
-  <div class="container">
-    <h2 class="gold">Galeri Kenangan</h2>
-    <div class="gallery">
-      <img src="galeri1.jpg" onclick="openLB(0)">
-      <img src="galeri2.jpg" onclick="openLB(1)">
-      <img src="galeri3.jpg" onclick="openLB(2)">
-      <img src="galeri4.jpg" onclick="openLB(3)">
-    </div>
-  </div>
-</section>
-
-<section class="bg-rsvp">
-  <div class="container">
-    <h2 class="gold">Konfirmasi Kehadiran</h2>
-    <div class="box rsvp">
-      <a href="https://wa.me/628988445100?text=assalamualaikum,saya%20akan%20hadir%20di%20pernikahan%20kalian">Hadir</a>
-      <a href="https://wa.me/628988445100?text=assalamualaikum,mohon%20maaf%20saya%20tidak%20dapat%20hadir%20di%20pernikahan%20kalian">Tidak Hadir</a>
-    </div>
-  </div>
-</section>
-
 </div>
 
+<audio id="musik" src="musik.mp3" loop></audio>
+
+<!-- NAV -->
+<nav>
+  <a href="#akad">Akad</a>
+  <a href="#dalil">Dalil</a>
+  <a href="#galeri">Galeri</a>
+  <a href="#rsvp">RSVP</a>
+</nav>
+
+<!-- AKAD -->
+<section id="akad" class="bg2">
+  <div class="box">
+    <h2>Aditya Maharaja</h2>
+    <p>Putra dari<br>Abbiya Aldevaro & Anindya Fariha</p><br>
+
+    <h2>Maharani Azzahra</h2>
+    <p>Putri dari<br>Komeng & Mput</p><br>
+
+    <p>📅 26 Januari 2026</p>
+    <p>🕘 09.00 WIB - Selesai</p>
+    <p id="countdown"></p><br>
+
+    <p>📍 SMK Widya Mukti</p>
+    <a href="https://maps.google.com/?q=SMK+Widya+Mukti" target="_blank" style="color:gold">Buka Google Maps</a>
+  </div>
+</section>
+
+<!-- DALIL -->
+<section id="dalil" class="bg3">
+  <div class="box">
+    <h2>Dalil Pernikahan</h2><br>
+    <p style="font-family:'Scheherazade New',serif;font-size:26px;line-height:1.8">
+      وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا
+      لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً
+    </p><br>
+    <p>
+      “Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan
+      untukmu dari jenismu sendiri agar kamu merasa tenteram kepadanya, dan Dia
+      menjadikan di antaramu rasa kasih dan sayang.”
+      <br><b>(QS. Ar-Rum: 21)</b>
+    </p>
+  </div>
+</section>
+
+<!-- GALERI -->
+<section id="galeri" class="bg4">
+  <div class="box">
+    <h2>Galeri Kenangan</h2><br>
+    <div class="gallery">
+      <img src="galeri1.jpg" onclick="zoom(this)">
+      <img src="galeri2.jpg" onclick="zoom(this)">
+      <img src="galeri3.jpg" onclick="zoom(this)">
+      <img src="galeri4.jpg" onclick="zoom(this)">
+    </div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section id="rsvp" class="bg5">
+  <div class="box rsvp">
+    <h2>Konfirmasi Kehadiran</h2>
+    <a href="https://wa.me/628988445100?text=assalamualaikum,saya%20akan%20hadir%20di%20pernikahan%20kalian">Hadir</a>
+    <a href="https://wa.me/628988445100?text=assalamualaikum,mohon%20maaf%20saya%20tidak%20dapat%20hadir%20di%20pernikahan%20kalian">Tidak Hadir</a>
+  </div>
+</section>
+
 <!-- LIGHTBOX -->
-<div id="lightbox" onclick="closeLB()">
-  <span id="close">×</span>
-  <img id="lb-img">
+<div id="lightbox" onclick="this.style.display='none'">
+  <img id="lightimg">
 </div>
 
 <script>
-const images=["galeri1.jpg","galeri2.jpg","galeri3.jpg","galeri4.jpg"];
-let index=0;
-
 function buka(){
-  document.getElementById('music').play();
-  document.getElementById('content').style.display='block';
-  document.getElementById('cover').style.display='none';
+  document.getElementById('cover').style.opacity='0';
+  document.getElementById('cover').style.transform='scale(1.2)';
+  setTimeout(()=>document.getElementById('cover').style.display='none',1000);
+  document.getElementById('musik').play();
 }
 
-function openLB(i){
-  index=i;
-  document.getElementById('lb-img').src=images[index];
+function zoom(img){
   document.getElementById('lightbox').style.display='flex';
+  document.getElementById('lightimg').src=img.src;
 }
 
-function closeLB(){
-  document.getElementById('lightbox').style.display='none';
-}
-
-/* swipe */
-let startX=0;
-document.getElementById('lightbox').addEventListener('touchstart',e=>{
-  startX=e.touches[0].clientX;
-});
-document.getElementById('lightbox').addEventListener('touchend',e=>{
-  let endX=e.changedTouches[0].clientX;
-  if(endX<startX-50) next();
-  if(endX>startX+50) prev();
-});
-function next(){
-  index=(index+1)%images.length;
-  document.getElementById('lb-img').src=images[index];
-}
-function prev(){
-  index=(index-1+images.length)%images.length;
-  document.getElementById('lb-img').src=images[index];
-}
-
-/* countdown */
-const target=new Date("2026-01-26T09:00:00").getTime();
+/* COUNTDOWN */
+const target=new Date("2026-01-26T09:00:00+07:00").getTime();
 setInterval(()=>{
   const now=new Date().getTime();
-  const d=target-now;if(d<0)return;
-  document.getElementById('countdown').innerHTML=`
-  <div class="time">${Math.floor(d/86400000)}<br>Hari</div>
-  <div class="time">${Math.floor(d%86400000/3600000)}<br>Jam</div>
-  <div class="time">${Math.floor(d%3600000/60000)}<br>Menit</div>
-  <div class="time">${Math.floor(d%60000/1000)}<br>Detik</div>`;
+  const d=target-now;
+  if(d<=0){
+    document.getElementById("countdown").innerHTML="✨ Acara Sedang Berlangsung ✨";
+    return;
+  }
+  const h=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+  const m=Math.floor((d%(1000*60*60))/(1000*60));
+  const s=Math.floor((d%(1000*60))/1000);
+  document.getElementById("countdown").innerHTML=
+  `⏳ ${Math.floor(d/(1000*60*60*24))} Hari ${h} Jam ${m} Menit ${s} Detik`;
 },1000);
 </script>
 
 </body>
-  </html>
+</html>
